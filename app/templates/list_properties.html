@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block title %}Properties List{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-3">
+  <h2>Property List</h2>
+  <a href="/create-property" class="btn btn-primary">+ Create Property</a>
+</div>
+
+<hr class="my-4" />
+
+{% if properties %}
+  <table class="table table-bordered table-striped">
+    <thead class="table-dark">
+      <tr>
+        <th>Name</th>
+        <th>Address</th>
+        <th>Price</th>
+        <th>Size</th>
+        <th>Company</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for prop in properties %}
+        <tr>
+          <td>{{ prop.name }}</td>
+          <td>{{ prop.address }}</td>
+          <td>${{ "%.2f"|format(prop.price) }}</td>
+          <td>{{ prop.size or "—" }}</td>
+          <td>{{ prop.company }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% else %}
+  <div class="alert alert-info">No properties found.</div>
+{% endif %}
+{% endblock %}

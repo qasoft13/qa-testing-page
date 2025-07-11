@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %}Companies List{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-3">
+  <h2>Company List</h2>
+  <a href="/create-company" class="btn btn-primary">+ Create Company</a>
+</div>
+
+<hr class="my-4" />
+
+{% if companies %}
+  <table class="table table-bordered table-striped">
+    <thead class="table-dark">
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Type</th>
+        <th scope="col">Email</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for company in companies %}
+        <tr>
+          <td>{{ company.name }}</td>
+          <td>{{ company.type }}</td>
+          <td>{{ company.email or '—' }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% else %}
+  <div class="alert alert-info">No companies found.</div>
+{% endif %}
+
+{% endblock %}
