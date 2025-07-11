@@ -11,24 +11,35 @@ def create_app():
     def get_session_list(key):
         return session.get(key, [])
 
+
     def save_session_list(key, data_list):
         session[key] = data_list
 
+
     def init_session_data():
-        # Only initialize once per session
         if "companies" not in session:
             session["companies"] = get_companies()
 
         if "properties" not in session:
             session["properties"] = get_properties()
 
+
     @app.before_request
     def before_request():
         init_session_data()
 
+
     @app.route("/")
     def home():
         return redirect(url_for("list_properties"))
+
+    
+
+    @app.route("/create-company", methods=["GET"])
+    def create_company():
+        companies = get_session_list("companies")
+        return render_template("create_company.html", companies=companies)
+
 
 
     @app.route("/companies", methods=["GET"])
@@ -58,12 +69,16 @@ def create_app():
         return redirect(url_for("list_companies"))
 
 
-
-    @app.route("/create-company", methods=["GET"])
-    def create_company():
+    @app.route("/delete-company/<id>", methods=["POST"])
+    def delete_company(id):
         companies = get_session_list("companies")
-        return render_template("create_company.html", companies=companies)
-
+        updated = [c for c in companies if c["id"] != id]
+        if len(updated) < len(companies):
+            session["companies"] = updated
+            flash("Company deleted.", "success")
+        else:
+            flash("Company not found.", "warning")
+        return redirect(url_for("list_companies"))
     
 
     @app.route("/properties", methods=["GET"])
@@ -103,6 +118,18 @@ def create_app():
             save_session_list("properties", properties)
             flash("Property created successfully!", "success")
 
+        return redirect(url_for("list_properties"))
+
+    
+    @app.route("/delete-property/<id>", methods=["POST"])
+    def delete_property(id):
+        properties = get_session_list("properties")
+        updated = [p for p in properties if p["id"] != id]
+        if len(updated) < len(properties):
+            session["properties"] = updated
+            flash("Property deleted.", "success")
+        else:
+            flash("Property not found.", "warning")
         return redirect(url_for("list_properties"))
 
 

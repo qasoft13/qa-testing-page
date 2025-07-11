@@ -17,6 +17,7 @@
         <th scope="col">Name</th>
         <th scope="col">Type</th>
         <th scope="col">Email</th>
+        <th style="width: 100px;">Actions</th>
       </tr>
     </thead>
     <tbody>
@@ -25,6 +26,10 @@
           <td>{{ company.name }}</td>
           <td>{{ company.type }}</td>
           <td>{{ company.email or '—' }}</td>
+          <td class="text-end">
+            <form method="POST" action="{{ url_for('delete_company', id=company.id) }}" onsubmit="return confirm('Are you sure you want to delete this company?');">
+              <button class="btn btn-sm btn-danger">Delete</button>
+            </form>
         </tr>
       {% endfor %}
     </tbody>
