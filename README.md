@@ -2,7 +2,7 @@
 
 Welcome to the **QA Automation Engineer** technical test for candidates applying to **Leasey.AI**.
 
-This project simulates a simplified real estate management app. Your task is to explore the functionality, write test cases, and optionally implement automation using your preferred tools.
+This project simulates a simplified real estate management app. Your task is to explore the functionality, write automated test cases, and showcase your testing skills using the tools of your choice.
 
 ---
 
@@ -10,25 +10,27 @@ This project simulates a simplified real estate management app. Your task is to 
 
 The web app allows users to:
 
-### 1. Create Companies
+### 1. List, Create, and Delete Companies
 
-* **Fields**:
+**Fields:**
 
-  * Company Name (required)
-  * Company Type (dropdown: Real Estate, Construction, Broker, etc.)
-  * Email (optional, must be valid if provided)
-* Successfully created companies are stored in memory and appear in a list.
+- Company Name (required)
+- Company Type (dropdown: Real Estate, Construction, Broker, etc.)
+- Email (optional, must be valid if provided)
 
-### 2. Create Properties
+Successfully created companies are stored in memory and appear in a list.
 
-* **Fields**:
+### 2. List, Create, and Delete Properties
 
-  * Property Name (required)
-  * Address (required)
-  * Price (required, must be a positive number)
-  * Size (optional)
-  * Company (must be selected from the list of existing companies)
-* Successfully created properties are listed below the form.
+**Fields:**
+
+- Property Name (required)
+- Address (required)
+- Price (required, must be a positive number)
+- Size (optional)
+- Company (must be selected from the list of existing companies)
+
+Successfully created properties are listed below the form.
 
 > 💡 This app is fully frontend-driven — data is stored **in memory** only, and resets on server restart. No database or backend persistence is used.
 
@@ -36,22 +38,85 @@ The web app allows users to:
 
 ## 🎯 Your Task
 
-1. **Write Manual Test Cases**
+As part of the QA Automation Engineer technical test for **Leasey.AI**, your task is to evaluate the real estate management app by writing automated tests that validate its core functionality, edge cases, and validation rules.
 
-   * Cover both company and property creation flows.
-   * Include valid cases, edge cases, and error conditions.
-   * Submit in Markdown or PDF format.
+We’re interested in your approach to structuring tests, selecting scenarios, and communicating quality — not in full coverage or tool choice.
 
-2. **(Optional) Automate 2–3 Scenarios**
+---
 
-   * Use any automation tool you prefer (Selenium, Cypress, Playwright, etc.).
-   * Focus on structure, clarity, and correctness — not full coverage.
-   * Add a `make test` command to the `Makefile` to run your tests.
+### 1. ⚙️ Automate Functional Tests
 
-3. **(Optional) Report Bugs**
+Write automated test cases that cover the **main user flows and validation logic**, including:
 
-   * Identify any functional, validation, or UX issues.
-   * Describe each clearly in your submission.
+#### 🔸 CRUD Functionality
+- Listing existing companies and properties
+- Creating a company with valid data
+- Creating a property linked to a company
+- Deleting companies and properties
+
+#### 🔸 Edge Cases and Validation
+- Attempt to create a company with invalid email
+- Attempt to create a property with negative or missing price
+- Submit forms with required fields left blank
+- Verify handling of long strings or boundary values
+- Check that property creation fails when no company is selected
+
+#### 🔸 Get Curious (Optional)
+- Create your own test cases by exploring the app's routes, forms, and behaviors
+- Try unexpected inputs or actions to uncover bugs or edge cases
+- Review the base code and test anything that catches your eye
+
+#### 🔸 Documentation
+- Update the `tests/test-cases.md` file with a short explanation of your automated tests:
+  - What you tested
+  - Tools/frameworks used
+  - Any known limitations or notes
+
+---
+
+### 2. 🧪 Test Framework
+
+You may use any automation tool you're comfortable with, such as:
+
+- **Selenium**
+- **Playwright**
+- **Cypress**
+- **pytest + requests + BeautifulSoup (for simple DOM inspection)**
+
+Organize your tests clearly under the `tests/` directory. Use meaningful naming and include assertions to validate expected behavior.
+
+---
+
+### 3. 🔧 Setup & Execution
+
+- Add any required Python packages using Poetry (`poetry add --group dev your-package`) or Node packages using `npm`
+- Update the `Makefile` to include a `test:` command that runs your automation tests
+
+  For example, with `pytest`:
+
+  ```makefile
+  test:
+  	poetry run pytest tests/
+  ```
+
+  Or with `Cypress`:
+
+  ```makefile
+  test:
+  	npx cypress run
+  ```
+
+- Include any necessary configuration or usage notes in `tests/README.md` or as comments in your test files
+
+---
+
+### ✅ What We’re Looking For
+
+- Clear and readable test structure
+- Accurate and meaningful assertions
+- Solid scenario selection (not just happy path)
+- Minimal setup, easy to run
+- Optional: creative exploration, bug findings, or documentation
 
 ---
 
@@ -59,8 +124,8 @@ The web app allows users to:
 
 You will need:
 
-* Python 3.12 or higher
-* Poetry (Python dependency manager): [https://python-poetry.org/docs/#installation](https://python-poetry.org/docs/#installation)
+- Python 3.12 or higher
+- Poetry (Python dependency manager): [https://python-poetry.org/docs/#installation](https://python-poetry.org/docs/#installation)
 
 ### 📦 To Run the App Locally:
 
@@ -79,45 +144,34 @@ http://localhost:5000/create-company
 
 ## 📁 Working With This Test
 
-Please follow these steps to complete and submit your test:
+Please follow these steps to complete and submit your work:
 
-1. **Fork this repository**
-2. Add your manual test cases and automation code:
-
-   * Place your manual test cases in a new file inside `tests/` (e.g. `tests/test-cases.md`)
-   * Place your automation code inside the `tests/` directory (you can organize as needed)
-3. **Add any required dependencies** for your automation framework using Poetry:
+1. **Fork this repository** to your GitHub account
+2. Add your automation test code:
+   - Add your test suite description in `tests/test-cases.md`
+   - Place your automation test code inside the `tests/` directory
+3. Add any required dependencies using Poetry or npm:
 
    ```bash
    poetry add --group dev your-package
-   ```
-4. \*\*Update the \*\*\`\` to include a `test:` command to run your automation:
-
-   ```makefile
-   test:
-   	poetry run pytest tests/
+   # or
+   npm install your-package
    ```
 
-   Or, for Cypress:
-
-   ```makefile
-   test:
-   	npx cypress run
-   ```
-5. **Push your fork to GitHub** and share the link with us.
+4. Update the `Makefile` to define a `test:` command that runs your test suite
+5. **Push your fork to GitHub** and share the link with us
 
 ---
 
 ## 📝 Submission Checklist
 
 - [x] Forked the repository  
-- [x] Manual test cases added in `tests/`  
-- [x] (Optional) Automation tests added in `tests/`  
+- [x] Test suite description added in `tests/test-cases.md`  
+- [x] Automation tests included in `tests/`  
 - [x] (Optional) Bug report included  
 - [x] `make test` command added to `Makefile`  
-- [x] Dependencies added to `pyproject.toml` via Poetry (if needed)  
-- [x] Instructions included for how to run the tests (in a short README or comment)  
-
+- [x] Dependencies added to `pyproject.toml` or `package.json`  
+- [x] Instructions included for how to run the tests (in a short README or code comments)
 
 ---
 

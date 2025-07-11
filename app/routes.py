@@ -33,13 +33,11 @@ def create_app():
     def home():
         return redirect(url_for("list_properties"))
 
-    
 
     @app.route("/create-company", methods=["GET"])
     def create_company():
         companies = get_session_list("companies")
         return render_template("create_company.html", companies=companies)
-
 
 
     @app.route("/companies", methods=["GET"])
