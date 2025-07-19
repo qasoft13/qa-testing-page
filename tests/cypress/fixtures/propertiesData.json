@@ -1,0 +1,51 @@
+[
+  {
+    "propertyName": "Ocean View Apartment",
+    "address": "123 Beach Ave",
+    "price": 250000.00,
+    "size": "120 sqm",
+    "company": "Acme Real Estate"
+  },
+  {
+    "propertyName": "Downtown Loft",
+    "address": "456 City Center",
+    "price": 320000.00,
+    "size": "95 sqm",
+    "company": "Acme Real Estate"
+  },
+  {
+    "propertyName": "Suburban House",
+    "address": "789 Maple Drive",
+    "price": 290000.00,
+    "size": "150 sqm",
+    "company": "Acme Real Estate"
+  },
+  {
+    "propertyName": "Mountain Cabin",
+    "address": "111 Pine Hill",
+    "price": 180000.00,
+    "size": "80 sqm",
+    "company": "Sunrise Builders"
+  },
+  {
+    "propertyName": "Lakeside Villa",
+    "address": "222 Lake Road",
+    "price": 450000.00,
+    "size": "200 sqm",
+    "company": "Sunrise Builders"
+  },
+  {
+    "propertyName": "Modern Duplex",
+    "address": "333 Oak Lane",
+    "price": 370000.00,
+    "size": "140 sqm",
+    "company": "Sunrise Builders"
+  },
+  {
+    "propertyName": "Urban Condo",
+    "address": "1000 Skyline Blvd",
+    "price": 310000.00,
+    "size": "85 sqm",
+    "company": "Blue Horizon Brokers"
+  }
+]

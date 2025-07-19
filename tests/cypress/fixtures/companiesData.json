@@ -1,0 +1,17 @@
+[
+  {
+    "companyName": "Acme Real Estate",
+    "companyType": "Real Estate",
+    "email": "contact@acmereal.com"
+  },
+  {
+    "companyName": "Sunrise Builders",
+    "companyType": "Construction",
+    "email": "info@sunrisebuild.com"
+  },
+  {
+    "companyName": "Blue Horizon Brokers",
+    "companyType": "Broker",
+    "email": "support@bluehorizon.co"
+  }
+]
