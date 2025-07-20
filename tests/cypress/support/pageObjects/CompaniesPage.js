@@ -11,6 +11,12 @@ get resetDataButton() { return 'button.btn btn-outline-light btn-sm'};
 //nav 
 goTo(url) { cy.visit(url) }
 
+validateCompLandingPage() { 
+  cy.url().should('include', '/companies');
+  cy.contains("Company List");
+
+}
+
 
 deleteCompanyByName(companyName) {
     cy.contains('td', companyName).parent('tr').within(() => {
@@ -48,8 +54,22 @@ deleteRandomCompany(){
     cy.get('table tbody').should('not.contain', companyName);
   });
 
-}
+}// fin delete random
 
+
+validateRequiredFieldInTable(){
+
+        cy.get('table tbody tr').each(($row) => {
+        // Validate Company Name cell is not empty
+        cy.wrap($row).find('td').eq(0).should('not.be.empty');
+        // Validate Company Type cell is not empty
+       cy.wrap($row).find('td').eq(1).should('not.be.empty');
+       // Validate Button Delete is not empty
+       cy.wrap($row).find('td').eq(3).should('not.be.empty');
+
+});
+
+}// fin validate table
 
 resetData(){ cy.contains('button', 'Reset Data').click(); }
 

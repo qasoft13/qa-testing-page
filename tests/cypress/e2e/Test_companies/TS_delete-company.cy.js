@@ -1,8 +1,10 @@
 import { CompaniesPage } from '../../support/pageObjects/CompaniesPage';
+import { utils } from '../../support/utils';
 
-describe('Company creation test suite', () => {
+describe('Delete companies test suite', () => {
   
   const companies = new CompaniesPage();
+  const navBar = new utils();
 
   //load json data
   beforeEach(function(){
@@ -14,14 +16,30 @@ describe('Company creation test suite', () => {
 
   })
 
-  it('TC_01 Delete a company', function() {
+  it('TC_COMPANY_08 Delete a company', function() {
+    /*
+    Title: TC_COMPANY_08 Delete a company
+    Type: Functional
+    Priority: Hight
+    Module: Companies listings
+    Created By: Juan De los Rios
+    Date: 25-07-20
+    */
   
         companies.deleteCompanyByName(this.data.companyName);
         companies.deleteValidation(this.data.companyName);
 
     })
 
-    it('TC_02 Delete a random company', function() {
+    it('TC_COMPANY_09 Delete a random company', function() {
+    /*
+    Title: TC_COMPANY_08 Delete a random company
+    Type: Functional
+    Priority: Hight
+    Module: Companies listings
+    Created By: Juan De los Rios
+    Date: 25-07-20
+    */
   
         companies.deleteRandomCompany();
         companies.deleteValidation();
@@ -31,7 +49,7 @@ describe('Company creation test suite', () => {
     
     //reset data after delete 
     after(function(){
-        companies.resetData();
+        navBar.resetData();
     })
     
   })//fin describe suit

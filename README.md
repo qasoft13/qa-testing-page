@@ -182,3 +182,7 @@ This is not a speed test — we’re more interested in how you think, organize,
 Thank you for applying to **Leasey.AI**, and good luck!
 
 — *Leasey.AI Recruitment Team*
+
+
+====================================================================================================
+

@@ -15,11 +15,12 @@ export class CreatePropertyPage{
     goTo(url) { cy.visit(url) }
 
     // fill fields
+
     //fill company name field
     fillPropertyName(property_name) { cy.get(this.propertyName).type(property_name); }
 
     fillMaxCharPropertyName() {
-         const longText = "QA".repeat(1000);
+         const longText = "QA".repeat(250);
          cy.get(this.propertyName).type(longText);
      }
 
@@ -34,6 +35,9 @@ export class CreatePropertyPage{
 
     //click create button
     clickCreateButton() { cy.contains('Create Property').click(); }
+
+    //click back to lits
+    clickBackToListButton() { cy.contains('Back to List').click(); }
 
     //validation creation
     validateCreation() { cy.contains('Property created successfully!').should('be.visible'); }

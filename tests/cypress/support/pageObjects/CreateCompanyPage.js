@@ -11,6 +11,11 @@ export class CreateCompanyPage{
     //nav 
     goTo(url) { cy.visit(url) }
 
+    validateCompLandingPage() { 
+      cy.url().should('include', '/create-company');
+      cy.contains('Create a New Company'); 
+    }
+
     //fill company name field
     fillCompanyName(company_name) { cy.get(this.companyName).type(company_name); }
 
@@ -22,6 +27,9 @@ export class CreateCompanyPage{
 
     //click create button
     clickCreateButton() { cy.contains('Create Company').click(); }
+
+    //click back to lits
+    clickBackToListButton() { cy.contains('Back to List').click(); }
 
     //validation creation
     validateCreation() { cy.contains('Company created successfully!').should('be.visible'); }
