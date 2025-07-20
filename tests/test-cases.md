@@ -42,12 +42,13 @@ TC_PROP_16 Fail to create a new property with empty form
 
 Verify handling of long strings or boundary values
 (Incident) 
+
+TC_PROP_18 Create a new property with max name characters @Regression
 [anomalie]
 Description: fields don’t have max characters validation “n” number of characters is valid
-TC_PROP_18 Create a new property with max name characters @Regression
-Check that property creation fails when no company is selected
+[steps to reproduce]
+Fill the name field with 1000 characters and make submit, the submit for is accepted
 
-TC_COMPANY_06 Fail to create a company with missing company type
 
 🔸 (Optional)
 

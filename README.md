@@ -1,3 +1,5 @@
+# Instruction for execution button of the file #
+
 # Leasey.AI – QA Automation Test Page
 
 Welcome to the **QA Automation Engineer** technical test for candidates applying to **Leasey.AI**.
@@ -186,3 +188,25 @@ Thank you for applying to **Leasey.AI**, and good luck!
 
 ====================================================================================================
 
+# TEST EXECUTION #
+
+✔ make test command added in Makefile	
+✅ the Makefile to run Cypress: npx cypress run.
+✔ Dependencies in pyproject.toml or package.json
+✅ Cypress is managed via npm; assumed added to package.json. Poetry used for backend.
+
+⚙ Prerequisites
+
+1. Node.js and npm
+
+2. Cypress as a dev dependency:
+  npm install cypress --save-dev
+
+3. If using Python/Flask backend:  
+   poetry install
+
+▶ Run Tests via Cypress UI
+npx cypress open
+Or, using the Makefile: make test
+
+ip put the spec patter to be more visible specPattern: 'cypress/e2e/**/*.cy.js', it list all .cy.js cypress test
