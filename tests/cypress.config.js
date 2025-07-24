@@ -8,6 +8,6 @@ module.exports = defineConfig({
     },
     // to tell cypress what to test 
     specPattern: 'cypress/e2e/**/*.cy.js',
-    //specPattern: 'cypress/integration/properties/TS_CreateCompanies.js'
+   // specPattern: 'cypress/e2e/Test_properties/TS_create-property.js'
   },
 });

@@ -11,21 +11,20 @@ describe('Company page test suite', () => {
   })
 
   it('TC_COMPANY_07 Required fields are present in table', function() {
-    /*
-    Title: TC_COMPANY_01 Required fields are present in table
-    Type: Functional
-    Priority: High
-    Module: Companies listings
-    Created By: Juan De los Rios
-    Date: 25-07-20
-    */
-
-    companies.validateRequiredFieldInTable();
+    
+     cy.get('table tbody tr').each(($row) => {
+      
+        cy.wrap($row).find('td').eq(0).should('not.be.empty');
+        
+        cy.wrap($row).find('td').eq(1).should('not.be.empty');
+       
+        cy.wrap($row).find('td').eq(3).should('not.be.empty'); 
+      });
   
-  });
+  })
 
 
-})//fin describe suit
+})
 
    
 

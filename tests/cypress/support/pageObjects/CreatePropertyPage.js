@@ -28,7 +28,14 @@ export class CreatePropertyPage{
 
     fillPrice(property_price) { cy.get(this.price).type(property_price); }
 
-    fillSize(property_size) { cy.get(this.size).type(property_size); }
+    fillSize(property_size) { 
+        cy.get(this.size).type(property_size); 
+    }
+
+    getFieldSize(){
+        const filledSize = cy.get(this.size).should('have.value', '');
+        cy.log(filledSize);
+    }
 
     //select company dropdown
     selectCompany(type) { cy.get('select').select(type)}

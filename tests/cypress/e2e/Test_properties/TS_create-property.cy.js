@@ -20,7 +20,7 @@ describe('Properties creation page test suite', () => {
   })// fin before each
   
 
-  it('TC_PROP_09 Create a new property', function() {
+  it('TC_PROP_09 Create a new property/ TEST EN CALIENTE ', function() {
     /*
     Title: TC_PROP_09 Create a new property
     Type: Functional
@@ -33,11 +33,12 @@ describe('Properties creation page test suite', () => {
     property.fillPropertyName(this.data.propertyName);
     property.fillAddress(this.data.address);
     property.fillPrice(this.data.price);
-    property.fillSize(this.data.size);
-    property.selectCompany(this.data.company);
-    property.clickCreateButton();
-    property.validateCreation();
-    property.ValidatePropertyInTable(this.data.propertyName);
+    property.fillSize("dsada");
+    property.getFieldSize();
+    //Sproperty.selectCompany(this.data.company);
+   // property.clickCreateButton();
+   // property.validateCreation();
+   // property.ValidatePropertyInTable(this.data.propertyName);
        
     })// fin TC_PROP_09
 

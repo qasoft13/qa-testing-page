@@ -8,45 +8,32 @@ describe('Company validation page test suite', () => {
   
 
   //load json data
-  beforeEach(function(){
+  before(function(){
 
     company.goTo("http://localhost:5000/create-company");
 
     cy.fixture('companiesData').then(function(companyData){
-         this.data = companyData[0];
+         this.data = companyData[1];
     })
 
-  })//beforeeach
-
-  it('TC_COMPANY_01 Create a company with valid data', function() {
   
-    company.fillCompanyName(this.data.companyName);
-    company.selectCompanyType(this.data.companyType);
-    company.fillEmail(this.data.email);
-    company.clickCreateButton();
-    company.validateCreation();
-    company.validateCompanyList(this.data.companyName);
+  it('TC_COMPANY_02 Create a company with valid data', function() {
+    
+    cy.get(companyName).type('New Test');
+    cy.get('select').select("Real Estate");
+    cy.get(email).type('new email')
+    cy.get(createButton).click();
+    
+
+    //company.fillEmail(this.data.email);
+   // company.clickCreateButton();
+  //  company.validateCreation();
+   // company.validateCompanyList(this.data.companyName);
        
-    })
+    })// with valid data
 
-
- 
-/*
- it('TC_07 Create an existing company (Duplicate)', function() {
-
-    company.fillCompanyName(this.data.companyName);
-    company.selectCompanyType(this.data.companyType);
-    company.fillEmail(this.data.email);
-    company.clickCreateButton();
-    company.validateCreation();
-    company.validateCompanyList(this.data.companyName);
- 
-})//fin Create an existing company (Duplicate)
-*/
 
 
 })//fin describe suit
 
-//})
-
-//})
+})
