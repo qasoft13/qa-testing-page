@@ -1,15 +1,15 @@
-import { CompaniesPage } from '../../support/pageObjects/CompaniesPage';
 import { utils } from '../../support/utils';
 
 describe('Delete companies test suite', () => {
   
-  const companies = new CompaniesPage();
   const navBar = new utils();
+  const  deleteButton = 'button.btn.btn-sm.btn-danger';
 
-  //load json data
-  beforeEach(function(){
 
-    companies.goTo("http://localhost:5000/companies");
+  beforeEach(function() {
+
+    cy.visit("http://localhost:5000/companies");
+
     cy.fixture('companiesData').then(function(companyData){
          this.data = companyData[1];
     })
@@ -17,42 +17,44 @@ describe('Delete companies test suite', () => {
   })
 
   it('TC_COMPANY_08 Delete a company', function() {
-    /*
-    Title: TC_COMPANY_08 Delete a company
-    Type: Functional
-    Priority: Hight
-    Module: Companies listings
-    Created By: Juan De los Rios
-    Date: 25-07-20
-    */
+
+    cy.contains('td', this.data.companyName).parent('tr').within(() => {
+    cy.get(deleteButton).click();
+    //or  cy.contains('button', 'Delete').click();
+
+    });
+
+    cy.contains('td', this.data.companyName).should('not.exist')
+
+  })
+
+  it('TC_COMPANY_09 Delete a random company', function() {
   
-        companies.deleteCompanyByName(this.data.companyName);
-        companies.deleteValidation(this.data.companyName);
-
-    })
-
-    it('TC_COMPANY_09 Delete a random company', function() {
-    /*
-    Title: TC_COMPANY_08 Delete a random company
-    Type: Functional
-    Priority: Hight
-    Module: Companies listings
-    Created By: Juan De los Rios
-    Date: 25-07-20
-    */
-  
-        companies.deleteRandomCompany();
-        companies.deleteValidation();
-
-    })
-
+    cy.get('table tbody tr').then(rows => {
+    const rowCount = rows.length;
     
-    //reset data after delete 
-    after(function(){
-        navBar.resetData();
-    })
+     if (rowCount === 0) {
+      cy.log('No companies to delete');
+      return;
+    }
+
+    const randomIndex = Math.floor(Math.random() * rowCount);
+    const row = rows[randomIndex];
+    const companyName = row.cells[0].innerText;
+
+    cy.wrap(row).find(deleteButton).click();
+
+    cy.get('table tbody').should('not.contain', companyName);
+   
+   });
+
+  })
     
-  })//fin describe suit
+  after(function(){
+     navBar.resetData();
+  })
+    
+})
 
  
 

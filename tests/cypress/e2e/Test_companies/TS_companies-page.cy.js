@@ -1,12 +1,10 @@
-import { CompaniesPage } from '../../support/pageObjects/CompaniesPage';
 
 describe('Company page test suite', () => {
   
-  const companies = new CompaniesPage();
-  
+
   before(function(){
 
-    companies.goTo("http://localhost:5000/companies");
+   cy.visit("http://localhost:5000/companies");
 
   })
 
@@ -19,7 +17,7 @@ describe('Company page test suite', () => {
         cy.wrap($row).find('td').eq(1).should('not.be.empty');
        
         cy.wrap($row).find('td').eq(3).should('not.be.empty'); 
-      });
+     });
   
   })
 
